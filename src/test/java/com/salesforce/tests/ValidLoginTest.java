@@ -1,6 +1,11 @@
 package com.salesforce.tests;
 
 import com.salesforce.pages.LoginPage;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -9,6 +14,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import java.time.Duration;
 
+@Epic("Salesforce Login Portal")
+@Feature("Authentication Services")
 public class ValidLoginTest {
     private WebDriver driver;
 
@@ -24,7 +31,9 @@ public class ValidLoginTest {
         }
     }
 
-    @Test
+    @Test(priority = 1)
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Verify valid login accepts proper credentials and navigates successfully")
     public void testValidLogin() {
         try {
             LoginPage loginPage = new LoginPage(driver);
