@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Plus, Settings, MessageSquare, Send, Paperclip, X, Check, Activity, User, Bot, Loader2 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import './App.css';
@@ -42,7 +42,7 @@ function App() {
   const testConnection = async () => {
     setTestStatus('testing');
     try {
-      const res = await fetch('http://localhost:3001/api/health');
+      const res = await fetch('/api/health');
       if (res.ok) {
         setTestStatus('success');
       } else {
@@ -63,7 +63,7 @@ function App() {
     setIsGenerating(true);
 
     try {
-      const response = await fetch('http://localhost:3001/api/chat', {
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
